@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>demo???</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f8ff;
+    }
+
+    body {
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Video Wrapper (hidden initially) */
+    .video-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: none; /* Hidden until button is clicked */
+    }
+
+    .video-wrapper video {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Tulip Button Style */
+    .tulip-button {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(to bottom, #ff4d6d 50%, #ff7979 50%);
+      border-radius: 50px 50px 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .tulip-button:before, .tulip-button:after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 50px;
+      background: linear-gradient(to bottom, #ff4d6d 50%, #ff7979 50%);
+      border-radius: 50px 50px 0 0;
+      transform: rotate(30deg);
+    }
+
+    .tulip-button:after {
+      transform: rotate(-30deg);
+    }
+
+    .stem {
+      position: absolute;
+      top: 100px;
+      width: 10px;
+      height: 150px;
+      background-color: #6da564;
+      border-radius: 5px;
+    }
+
+    .tulip-button:hover {
+      transform: scale(1.1);
+    }
+
+    .tulip-button:active {
+      transform: scale(0.9);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Tulip Button -->
+  <div class="tulip-button" id="tulipButton">
+    <div class="stem"></div>
+  </div>
+
+  <!-- Video Wrapper (hidden initially) -->
+  <div class="video-wrapper" id="videoWrapper">
+    <video id="video" loop preload="metadata">
+      <source src="jvk3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const tulipButton = document.getElementById('tulipButton');
+    const videoWrapper = document.getElementById('videoWrapper');
+    const video = document.getElementById('video');
+
+    // Play video when tulip button is clicked
+    tulipButton.addEventListener('click', () => {
+      tulipButton.style.display = 'none'; // Hide tulip button
+      videoWrapper.style.display = 'block'; // Show video
+      video.muted = false;
+      video.play(); // Play the video with sound
+    });
+  </script>
+
+</body>
+</html>
